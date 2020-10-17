@@ -1,5 +1,4 @@
-# django-webapp-azure
-Deploy django to Azure app servcie - Architecture and Code 
+Django - webapp azure - Deploy django to Azure app servcie - Architecture and Code 
 
 Just trying to architect and impliment the dhango appliction to migrate to Azure webapss which has django verion 1.6 with python 2.7 
 
@@ -22,8 +21,7 @@ We can migrate quickly and easily without much effort into development of applic
     
     Advantandages:
         
-        - This stretegy involves very less effort and easy to realise cloud capabiites such as auto scaling to scale based on
-        demand requirements
+        - This stretegy involves very less effort and easy to realise cloud capabiites such as auto scaling to scale based on  demand requirements
         - Azure Disster recovery for any data center failures and failover to another region
         - Its quick and easy. No chnchanges needed in appliction or investment needed for upgrade of app to latest version
     
@@ -65,7 +63,7 @@ Long Term:
 Best on the pros and cons, availability of the time and realization of ROI, I feel the best option would be to go first for cloud migration strategy for
 medium term and then mobe the cloud journey to long term strategy to reliase full benifits.
 
-.... image::  /images/App%20Service%20Deployment-Architecture.png
+.... image::  Django-Webapp-Azure/images/App Service Deployment-Architecture.png
     :alt: Account settings
     :width: 835
     :align: center
