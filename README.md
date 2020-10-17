@@ -1,12 +1,12 @@
-==================================================================================
+
 Django - webapp azure - Deploy django to Azure app servcie - Architecture and Code
-================================================================================== 
+
 
 Just trying to architect and impliment the dhango appliction for migrating to Azure web apps pass services. The aplication in scope
 has django verion 1.6 with python 2.7 
 
 Migrating to Azure
-------------------
+
 
 
 Notejam is developed using python 2.7 and django 1.6. Keeping business interests and cost optimization, We have 
@@ -14,7 +14,7 @@ two cloud migration strategies availbl. This strategy furtehr can be divided int
 cloud strategies.
 
 Short term options:
--------------------
+
 
 - Lift and shift: 
 
@@ -38,7 +38,7 @@ We can migrate quickly and easily without much effort into development of applic
         -Does not take full advantage of the cloud—legacy applications are not scalable and do not allow for distributed workloads like cloud-native applications do.
 
 Medium Term: 
-------------
+
 
 - Infrastructure refactoring
 
@@ -65,7 +65,7 @@ Medium Term:
         - Need to containarise this app as the current python verion is not supported and involves some effort. 
 
 Long Term:
----------- 
+ 
 
     Sunsetting Python 2 - January 1, 2020, was the day that Python 2 was sunset and no longer supported hence the code need to be upgraded to 
     Python 3. Its good to invest in upgrading the code and migrating to app services. This can be planned after implimenting the medium term cloud startegy 
