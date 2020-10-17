@@ -14,7 +14,7 @@ two cloud migration strategies availbl. This strategy furtehr can be divided int
 cloud strategies.
 
 Short term options:
-------------------
+-------------------
 
 - Lift and shift: 
 
@@ -74,7 +74,7 @@ Long Term:
 Best on the pros and cons, availability of the time and realization of ROI, I feel the best option would be to go first for cloud migration strategy for
 medium term and then mobe the cloud journey to long term strategy to reliase full benifits.
 
-.... image::  Django-Webapp-Azure/images/App Service Deployment-Architecture.png
+image::  /Django-Webapp-Azure/images/App Service Deployment-Architecture.png
     :alt: Account settings
     :width: 835
     :align: center
