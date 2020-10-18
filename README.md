@@ -78,8 +78,8 @@ Sunsetting Python version 2: January 1, 2020, was the day that Python 2 was suns
 
 Based on the above analysis and realizing best return on investment and considering the the pros and cons, availability of the time, I feel the best option would be to go first for cloud migration strategy for medium term and then move the cloud journey to long term strategy to reliase full benifits.
 
-![Image of Architecture ](images/App%20Service%20Deployment-Architecture.png)
 
+![Image of Architecture](images/App%20Service%20Deployment-Architecture%20.png)
 
 ### 1. _Front Door_: 
 
@@ -128,4 +128,8 @@ To quickly and easily optimize your Azure deployments, Azure Advisor analyzes yo
 
 ### 7. _Backup_
 
- Configure Azure Backup for longterm rention policy which is easy and cost effective. 
+ Configure Azure Backup for longterm rention policy which is easy and cost effective. This is needed to meet the requiremnt #2 
+
+ We have the remaing requirement which is not met is the provion to work 100 plus developers with 100 plus deployments. 
+
+ Deployment 
