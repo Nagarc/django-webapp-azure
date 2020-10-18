@@ -76,12 +76,12 @@ Sunsetting Python version 2: January 1, 2020, was the day that Python 2 was suns
 
 ### *Cloud Migration strategy*
 
-Based on the above analysis and realizing best return on investment and considering the the pros and cons, availability of the time, I feel the best option would be to go first for cloud migration strategy for medium term and then move the cloud journey to long term strategy to reliase full benifits.
+Based on the above analysis and realizing best return on investment and considering the the pros and cons, availability of the time, I feel the best option would be to go first for cloud migration strategy for medium term and then move the cloud journey to long term strategy to reliase full benifits. Azure is selected as public cloud provider. 
 
 
 ![Image of Architecture](images/App%20Service%20Deployment-Architecture%20.png)
 
-### 1. _Front Door_: 
+#### 1. _Front Door_: 
 
 Routes incoming requests to the primary region. If the application running that region becomes unavailable, Front Door fails over to the secondary region. it also provides below capabilities and more. This is needed to meet requirment #3 from business requirements. 
 
@@ -92,28 +92,28 @@ Routes incoming requests to the primary region. If the application running that 
 
 Configure front door to route all the traffic to primary region and route to secondary region if primary region fails. Use health probe to check avaialbilty of the backend.
 
-### 2. _Multi Region deployment_: 
+#### 2. _Multi Region deployment_: 
 
 Active and passive failover: We create two app servcie plans in two regions,one in active region - with P1V2 plan which serves the users and another standrad app servcie plan in paired region which will be used and fail over to by front door when active region/data center fails. 
 
-### 3. _Cross Region Read replica - PostgreSql_
+#### 3. _Cross Region Read replica - PostgreSql_
 
 Fully managed and intelligent Azure Database for PostgreSQL. Scale your workload quickly with ease and confidence. Enjoy high availability with up to 99.99% SLA and a choice of single zone or zone redundant high availability.
 
 configure cross-region replicationan for scenarios like disaster recovery planning. This configuration helps in meeting the requirement #3 
 
-### 4. _Auto Scaling_:
+#### 4. _Auto Scaling_:
 
 As per the requirement the application need to serve variable demand. Configure P1V2 App servcie plan in primary region which is cost effetive and can auto scale to 20 instances. This app service offers to configure auto scaling based on many matrics. 
 
 #### _Rule - CPU usage - Increase instance_: if CPU usage goes up beyond 70% average, add one more instance.
 #### _Rule - CPU Usage - Decrease Instance_: if CPU usage goes down beyond 30% average, add decrease instance by one.
 
-### 5. _Deployment Slots_:
+#### 5. _Deployment Slots_:
 
 P1V2 provides deployment slots. We Configure three deployment slots one for development, testing, production. this meets the requirement #6
 
-### 6. _Appliction Insights_:
+#### 6. _Appliction Insights_:
 
 Used to monitor your live applications. It will automatically detect performance anomalies, and includes powerful analytics tools to help you diagnose issues and to understand what users actually do with your app. It's designed to help you continuously improve performance and usability. This will ensure the quality assurence for appliction which is part of requirement #7 
 
@@ -121,15 +121,66 @@ Metrics Explorer for aggregated data:
 
 Explore, filter, and segment aggregated data such as rates of requests, failures, and exceptions; response times, page load times.
 
-### 7. _Azure Adviser_ 
+#### 7. _Azure Adviser_ 
 
 To quickly and easily optimize your Azure deployments, Azure Advisor analyzes your configurations and usage telemetry and offers personalized, actionable recommendations to help you optimize your Azure resources for reliability, security, operational excellence, performance, and cost. This helps in realizing the requiremnt for the security part of the requiremnt # 7
 
 
-### 7. _Backup_
+#### 7. _Backup_
 
  Configure Azure Backup for longterm rention policy which is easy and cost effective. This is needed to meet the requiremnt #2 
 
  We have the remaing requirement which is not met is the provion to work 100 plus developers with 100 plus deployments. 
 
- Deployment 
+## Infrastructure Deployment
+
+To migarte to cloud we need to provion the infrastructure such as app service plans, apps, data bases and monitoring services. 
+
+Propsing Azure Devops as devops infrastructure and Azure as cloud provider
+
+Use CLI and resource manager temaplates to quickly deploy the infra structure in azure. Please see below infrastructure components.
+
+![Image of Deployment](images/App%20Service%20Deployment-Infra%20Deployment.png)
+
+#### 1. _Container Registry_ 
+
+Create and maintain Azure container registries to store and manage private Docker container images and related artifacts. Use premium SKU to support encryption of the images. Base and stanadrd doesnt support the encryption. 
+
+#### 2. *App Service Plan* 
+
+Create appservcie plan P1V2 and app service under it. 
+
+#### 3. *PostgreSql*
+
+Deploy single server postgreSql server in availble region where app is hosted. 
+
+#### 4. *Log Analytics,Appliction Insights and Storage account*
+
+Create Log analytcis, appliction insights and storage account. Azure adviser is a default servcie and which helps in monotring cost, performance and security.
+
+[See for more details of this step ](Azure_Infra_deployment.md)
+
+## Devops - 
+
+Continuous deployment is a key feature for many fast-moving organizations. They need to deploy the latest version of their software quickly, but with the minimum of fuss. This specified as requirement #5 to support multiple developers and deployments a day
+
+
+![Image of DevOps](images/App%20Service%20Deployment-%20Devops-CICD.png)
+
+
+#### 1. *Configure ACR Task*
+
+It provides cloud-based container image building for platforms including Linux, Windows, and ARM, and can automate OS and framework patching for your Docker containers. 
+
+Configure ACR task to build image whenver there is a change/commit in source code which automtaically built an image. We use trigger on source code update and which stored in Azure repos
+
+#### 2. Webhook
+
+
+Azure App Service supports continuous deployment using webhooks. We configure App servcie  applications to subscribe to the webhook to receive notifications about updates to images in the registry and pull the latest image to the app automatically and restart the site in predefined slot such as developmen 
+
+
+[See for more details of this step ](/DevOps.md)
+
+
+
