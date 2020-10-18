@@ -15,6 +15,3 @@ az account set --subscription "your subscription id"
 Now deploy the webapp
 
 az group deployment create --resource-group nj-d-rj --template-file ./azuredeploy.json
-
-
-
