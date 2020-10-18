@@ -1,4 +1,4 @@
-## 1. Create regitry 
+## 1. Create Container registry 
 
 az login
 az account set --subscription "your subscription id"
@@ -6,9 +6,10 @@ az group create --name "nj-d-rg" --location "North Europe" --sku premium
 
 az acr create --name njdcr --resource-group nj-d-rg --sku premium --admin-enabled true
 
-## Create App service plan
+## 2. Create App service plan
 
 az login
+
 az account set --subscription "your subscription id"
 
 Now deploy the webapp
