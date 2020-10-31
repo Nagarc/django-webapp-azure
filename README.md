@@ -2,9 +2,9 @@
 ## Django - A web app - Deploy to Azure app service web apps - Architecture and Code
  
  
-Provide architecture and implement the django application for migrating to Azure web apps PasS services. The application in scope has been implemented with django version 1.6 with python 2.7.
+Provide architecture and implement the django application for migrating to Azure web apps PasS services. The application in scope for migration, has been implemented with django version 1.6 and python 2.7.
  
-You can access and study the repo here
+You can access, run locally and study the repo here
  
 https://github.com/Nagarc/notejam
  
